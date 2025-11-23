@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — MAIE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+body {
+  margin:0; padding:0;
+  font-family:'Poppins', sans-serif;
+  background: linear-gradient(135deg, #e8f4ff, #d0e8ff, #b8dcff);
+  color:#0a2647;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.login-box {
+  background: rgba(255,255,255,0.9);
+  padding:40px;
+  border-radius:20px;
+  width:330px;
+  box-shadow:0 0 25px rgba(0,80,255,0.20);
+  text-align:center;
+  border:1px solid rgba(0,80,255,0.15);
+}
+h2 {
+  margin-bottom:25px;
+  font-size:2em;
+  color:#0a2647;
+  text-shadow:0 0 10px rgba(0,120,255,0.4);
+}
+input {
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+  outline:none;
+  background:#f0f7ff;
+  color:#0a2647;
+  font-size:1em;
+  border:1px solid rgba(0,80,255,0.15);
+}
+input::placeholder {color:#5e7fa5;}
+button {
+  width:100%;
+  padding:12px;
+  margin-top:15px;
+  background:linear-gradient(90deg,#6fb7ff,#3ea1ff);
+  color:white;
+  font-weight:600;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+button:hover {background:#1e90ff; box-shadow:0 0 15px rgba(0,120,255,0.4);}
+.error-msg {color:red; font-size:0.9em; margin-top:10px; display:none;}
+</style>
+</head>
+<body>
+
+<div class="login-box">
+  <h2>∫ Connexion</h2>
+
+  <form id="loginForm">
+    <input type="text" id="username" placeholder="Nom d’utilisateur" required>
+    <input type="password" id="password" placeholder="Mot de passe" required>
+    <button type="submit">Se connecter</button>
+    <p class="error-msg" id="errorMsg">Nom d’utilisateur ou mot de passe incorrect</p>
+  </form>
+</div>
+
+<script>
+const form = document.getElementById("loginForm");
+const errorMsg = document.getElementById("errorMsg");
+
+// Définir les identifiants corrects
+const correctUsername = "admin";
+const correctPassword = "1234";
+
+form.addEventListener("submit",(e)=>{
+  e.preventDefault();
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if(username === correctUsername && password === correctPassword){
+    // Stocker dans localStorage pour vérifier sur les autres pages
+    localStorage.setItem("username",username);
+    localStorage.setItem("password",password);
+    window.location.href = "semestres.html"; // redirection vers la page des semestres
+  } else {
+    errorMsg.style.display = "block";
+  }
+});
+</script>
+
+</body>
+</html>

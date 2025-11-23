@@ -1,0 +1,44 @@
+<!-- ====== BOUTONS DES MODULES ====== -->
+
+<h2>Semester 1</h2>
+
+<button onclick="loadCourse('AF', 1)">Analyse Fonctionnelle – Chapitre 1</button>
+<button onclick="loadCourse('ALG', 1)">Algèbre – Chapitre 1</button>
+<button onclick="loadCourse('ANA1', 1)">Analyse 1 – Chapitre 1</button>
+<button onclick="loadCourse('STAT', 1)">Statistiques – Chapitre 1</button>
+<button onclick="loadCourse('MICRO', 1)">Microéconomie – Chapitre 1</button>
+
+<h2>Semester 2</h2>
+
+<button onclick="loadCourse('ANA2', 1)">Analyse 2 – Chapitre 1</button>
+<button onclick="loadCourse('MACRO', 1)">Macroéconomie – Chapitre 1</button>
+<button onclick="loadCourse('PROBA', 1)">Probabilités – Chapitre 1</button>
+<button onclick="loadCourse('ECO', 1)">Économie – Chapitre 1</button>
+<button onclick="loadCourse('FIN', 1)">Finance – Chapitre 1</button>
+
+<h2>Autres</h2>
+
+<button onclick="loadCourse('PY', 1)">Python – Chapitre 1</button>
+<button onclick="loadCourse('FR', 1)">Français – Chapitre 1</button>
+<button onclick="loadCourse('ENG', 1)">English – Chapitre 1</button>
+
+
+<!-- ====== JAVASCRIPT GLOBAL ====== -->
+
+<script>
+function loadCourse(modulePrefix, chapNumber) {
+    // EX: AF + Chap1 = AF-Chap1.pdf
+    const fileName = `${modulePrefix}-Chap${chapNumber}.pdf`;
+    const filePath = `files/${fileName}`;
+
+    fetch(filePath, { method: "HEAD" })
+        .then(res => {
+            if (res.ok) {
+                window.open(filePath, "_blank");
+            } else {
+                alert("Fichier introuvable : " + fileName);
+            }
+        })
+        .catch(() => alert("Erreur lors du chargement du fichier"));
+}
+</script>
