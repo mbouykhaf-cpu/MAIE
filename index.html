@@ -460,11 +460,11 @@ const container = document.getElementById("modules-container");
 
 const semesters = {
   1:[
-    {name:"Analyse fonctionnelle", cours:["AF-Chap1.pdf","AF-Chap2.pdf"], td:["AF-TD1.pdf","AF-TD2.pdf"]},
-    {name:"Algèbre de base et applications", cours:["ALG-Chap1.pdf"], td:["ALG-TD1.pdf","ALG-TD2.pdf","ALG-TD3.pdf","ALG-TD4.pdf"],},
-    {name:"Méthodes numériques", cours:["MN-Chap1.pdf","MN-Chap2.pdf","MN-Chap3.pdf"], td:["MN-TD1.pdf","MN-TD2.pdf","MN-TD3.pdf","MN-TD4.pdf"]},
-    {name:"Probabilités & statistique inférentielle", cours:["PSI-Chap1.pdf","PSI-Chap2.pdf","PSI-Chap3.pdf"], td:[]},
-    {name:"Mathématiques pour l'IA", cours:["MIA-Chap1.pdf","MIA-Chap2.pdf"], td:[]},
+    {name:"Analyse fonctionnelle", cours:["AF-Chap1.pdf","AF-Chap2.pdf","AF-Chap3.pdf","AF-Chap4.pdf"], td:["AF-TD1.pdf","AF-TD2.pdf","AF-TD3.pdf","AF-TD4.pdf"]},
+    {name:"Algèbre de base et applications", cours:["ALG-Chap1.pdf","ALG-Chap2.pdf","ALG-Chap3.pdf","ALG-Chap4.pdf"], td:["ALG-TD1.pdf","ALG-TD2.pdf","ALG-TD3.pdf","ALG-TD4.pdf"],},
+    {name:"Méthodes numériques", cours:["MN-Chap1.pdf","MN-Chap2.pdf","MN-Chap3.pdf","MN-Chap4.pdf"], td:["MN-TD1.pdf","MN-TD2.pdf","MN-TD3.pdf","MN-TD4.pdf"]},
+    {name:"Probabilités & statistique inférentielle", cours:["PSI-Chap1.pdf","PSI-Chap2.pdf","PSI-Chap3.pdf","PSI-Chap4.pdf"], td:["PSI-TD1.pdf","PSI-TD2.pdf","PSI-TD3.pdf","PSI-TD4.pdf"]},
+    {name:"Mathématiques pour l'IA", cours:["MIA-Chap1.pdf","MIA-Chap2.pdf","MIA-Chap3.pdf","MIA-Chap4.pdf"], td:["MIA-TD1.pdf","MIA-TD2.pdf","MIA-TD3.pdf","MIA-TD4.pdf"]},
     {name:"TICE & communication scientifique", cours:["TICE-Chap1.pdf","TICE-Chap2.pdf","TICE-Chap3.pdf","TICE-Chap4.pdf"], td:["TICE-TD1.pdf","TICE-TD2.pdf","TICE-TD3.pdf","TICE-TD4.pdf"]},
     {name:"Langues étrangeres", cours:["LG-Chap1.pdf","LG-Chap2.pdf","LG-Chap3.pdf","LG-Chap4.pdf"], td:[]},
 
@@ -518,7 +518,7 @@ document.getElementById("backToSem").addEventListener("click", ()=>{
 function renderModules(sem){
   container.innerHTML="";
 
-  const allowedModules = ["Culture entrepreneuriale","Analyse convexe & optimisation","Python pour la modélisation","Recherche opérationnelle","Méthodes analytiques & numériques", "Analyse harmonique appliquée", "Mathématiques pour l'IA","Langues étrangeres","Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques","Analyse fonctionnelle"]; 
+  const allowedModules = [ "Analyse harmonique appliquée", "Mathématiques pour l'IA","Langues étrangeres","Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques","Analyse fonctionnelle"]; 
 
   semesters[sem].forEach(m=>{
     if (m.isSpecial) {
