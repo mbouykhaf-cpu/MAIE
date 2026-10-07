@@ -8,9 +8,9 @@
 <style>
 body { margin:0; padding:0; font-family:'Poppins',sans-serif; background: linear-gradient(135deg,#ffffff,#cce0ff); color:#003366; }
 h1 { text-align:center; font-size:3em; margin:40px 0 20px 0; text-shadow:0 0 15px #66ccff; }
-.hidden { display:none; }
+.hidden { display:none !important; }
 .login-box { background: rgba(255,255,255,0.9); padding:40px; border-radius:20px; width:330px; box-shadow:0 0 25px rgba(0,80,255,0.2); text-align:center; margin:auto; margin-top:100px; }
-.login-box input { width:100%; padding:12px; margin:10px 0; border:none; border-radius:8px; outline:none; background:#f0f7ff; color:#0a2647; font-size:1em; border:1px solid rgba(0,80,255,0.15); }
+.login-box input { width:100%; padding:12px; margin:10px 0; border-radius:8px; outline:none; background:#f0f7ff; color:#0a2647; font-size:1em; border:1px solid rgba(0,80,255,0.15); box-sizing: border-box; }
 .login-box input::placeholder { color:#5e7fa5; }
 .login-box button { width:100%; padding:12px; margin-top:15px; background:linear-gradient(90deg,#6fb7ff,#3ea1ff); color:white; font-weight:600; border:none; border-radius:10px; cursor:pointer; transition:0.3s; }
 .login-box button:hover { background:#1e90ff; box-shadow:0 0 15px rgba(0,120,255,0.4); }
@@ -196,6 +196,7 @@ h1 { text-align:center; font-size:3em; margin:40px 0 20px 0; text-shadow:0 0 15p
     transition: all 0.3s ease;
     border: 1px solid #99ccff;
     box-shadow: 0 4px 8px rgba(0, 102, 204, 0.1);
+    box-sizing: border-box;
 }
 
 .external-link:hover {
@@ -227,12 +228,11 @@ h1 { text-align:center; font-size:3em; margin:40px 0 20px 0; text-shadow:0 0 15p
 .semestre-buttons { display:flex; justify-content:center; gap:20px; margin-bottom:30px; flex-wrap:wrap; }
 .sem-btn { background:linear-gradient(90deg,#66ccff,#0099ff); color:white; border:none; padding:15px 30px; font-weight:600; border-radius:10px; cursor:pointer; transition:0.3s; font-size:1.1em; }
 .sem-btn:hover {background:#003366;}
-.back-btn { display:inline-block; margin:20px; background:#ff4d4d; padding:10px 20px; border:none; border-radius:8px; color:white; font-weight:600; cursor:pointer; transition:0.3s; }
+.back-btn { display:block; margin:20px auto; background:#ff4d4d; padding:10px 20px; border:none; border-radius:8px; color:white; font-weight:600; cursor:pointer; transition:0.3s; }
 .back-btn:hover {background:#cc0000;}
-.modules { display:grid; grid-template-columns:repeat(3, 1fr); gap:25px; max-width:1200px; margin:auto; padding:20px; }
-.modules.single-center { justify-items:center; }
+.modules { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:25px; max-width:1200px; margin:auto; padding:20px; }
 .card { background: rgba(255,255,255,0.9); border-radius:15px; padding:25px; text-align:center; position:relative; overflow:hidden; box-shadow:0 0 15px rgba(0,102,204,0.3); transition:0.3s; }
-.card:hover { transform:translateY(-8px) scale(1.05); box-shadow:0 0 40px rgba(0,102,204,0.5); }
+.card:hover { transform:translateY(-8px) scale(1.02); box-shadow:0 0 40px rgba(0,102,204,0.5); }
 .card h3 { margin-bottom:15px; font-size:1.4em; color:#003366; }
 
 /* Style spécial pour le module Présentations */
@@ -246,7 +246,6 @@ h1 { text-align:center; font-size:3em; margin:40px 0 20px 0; text-shadow:0 0 15p
     text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
 }
 
-/* Style pour le bouton Présentations */
 .presentations-btn { 
     background: linear-gradient(90deg, #ff9933, #ff6600);
     color: white;
@@ -257,7 +256,6 @@ h1 { text-align:center; font-size:3em; margin:40px 0 20px 0; text-shadow:0 0 15p
     display: inline-block;
     margin-top: 10px;
     transition: 0.3s;
-    border: 2px solid #ff3300;
     cursor: pointer;
     border: none;
 }
@@ -266,7 +264,6 @@ h1 { text-align:center; font-size:3em; margin:40px 0 20px 0; text-shadow:0 0 15p
     box-shadow: 0 0 20px rgba(255, 102, 0, 0.6);
 }
 
-/* Dropdown pour les présentations */
 .presentations-dropdown { 
     display: none;
     flex-direction: column;
@@ -313,7 +310,6 @@ footer p {margin:5px 0;}
 <div id="semPage" class="hidden">
   <h1>Σ Bibliothèque MAIE ∫</h1>
   
-  <!-- زر الإعلانات الجديد -->
   <button class="announcements-btn" id="announcementsBtn">
     📢 les annonces
   </button>
@@ -323,30 +319,25 @@ footer p {margin:5px 0;}
     <button class="sem-btn" data-sem="2">Semestre 2</button>
     <button class="sem-btn" data-sem="3">Semestre 3</button>
   </div>
- <!-- قسم الروابط الخارجية الجديد -->
-<div class="external-links-section">
-  <h3>📚 Liens externes</h3>
 
-  <div class="links-container">
+  <div class="external-links-section">
+    <h3>📚 Liens externes</h3>
 
-    <a href="https://drive.google.com/drive/folders/1oE5nViXFykDVsMS_1xxwS93LkxhqzJdP?usp=drive_link"
-       target="_blank"
-       class="external-link">
-      <span class="link-icon">📖</span>
-      <span class="link-text">Les présentations</span>
-    </a>
+    <div class="links-container">
+      <a href="https://drive.google.com/drive/folders/1oE5nViXFykDVsMS_1xxwS93LkxhqzJdP?usp=drive_link" target="_blank" class="external-link">
+        <span class="link-icon">📖</span>
+        <span class="link-text">Les présentations</span>
+      </a>
 
-    <a href="https://drive.google.com/drive/folders/1FUizqP8SFZyKZxRA2I5eiiX7qsZMdfLS"
-       target="_blank"
-       class="external-link">
-      <span class="link-icon">📖</span>
-      <span class="link-text">Les examens</span>
-    </a>
-
+      <a href="https://drive.google.com/drive/folders/1FUizqP8SFZyKZxRA2I5eiiX7qsZMdfLS" target="_blank" class="external-link">
+        <span class="link-icon">📖</span>
+        <span class="link-text">Les examens</span>
+      </a>
+    </div>
   </div>
-</div>
 
-<button class="back-btn" id="logoutBtn">Déconnexion</button>
+  <button class="back-btn" id="logoutBtn">Déconnexion</button>
+</div>
 
 <div id="modulesPage" class="hidden">
   <h1>Σ Bibliothèque MAIE ∫</h1>
@@ -387,7 +378,23 @@ const loginMessage = document.getElementById("loginMessage");
 const announcementsModal = document.getElementById("announcementsModal");
 const announcementsList = document.getElementById("announcementsList");
 
-
+// تعريف مصفوفة الإعلانات (المكان الذي كان ينقص الكود)
+const announcements = [
+  {
+    title: "Bienvenue sur la plateforme MAIE",
+    text: "Tous les cours et séries de TD sont mis à jour régulièrement.",
+    date: "2025-02-01",
+    type: "important",
+    icon: "📌"
+  },
+  {
+    title: "Nouveaux examens ajoutés",
+    text: "Consultez la section des liens externes pour accéder aux examens récents.",
+    date: "2025-02-10",
+    type: "new",
+    icon: "📝"
+  }
+];
 
 // عرض الإعلانات
 function renderAnnouncements() {
@@ -437,15 +444,15 @@ announcementsModal.addEventListener("click", (e) => {
 
 const loginBtn = document.getElementById("loginBtn");
 loginBtn.addEventListener("click", ()=>{
-  const username = document.getElementById("usernameInput").value;
-  const password = document.getElementById("passwordInput").value;
-  if(username.endsWith("@edu.umi.ac.ma") && password==="g(MAIE)"){
+  const username = document.getElementById("usernameInput").value.trim();
+  const password = document.getElementById("passwordInput").value.trim();
+  if(username.endsWith("@edu.umi.ac.ma") && password === "g(MAIE)"){
     localStorage.setItem("username", username);
-    loginMessage.style.display="none";
+    loginMessage.style.display = "none";
     showSemPage();
   }else{
-    loginMessage.textContent="Accès refusé ! Veuillez vérifier vos identifiants.";
-    loginMessage.style.display="block";
+    loginMessage.textContent = "Accès refusé ! Veuillez vérifier vos identifiants.";
+    loginMessage.style.display = "block";
   }
 });
 
@@ -470,15 +477,12 @@ const container = document.getElementById("modules-container");
 const semesters = {
   1:[
     {name:"Analyse fonctionnelle", cours:["AF-Chap1.pdf","AF-Chap2.pdf","AF-Chap3.pdf","AF-Chap4.pdf"], td:["AF-TD1.pdf","AF-TD2.pdf","AF-TD3.pdf","AF-TD4.pdf"]},
-    {name:"Algèbre de base et applications", cours:["ALG-Chap1.pdf","ALG-Chap2.pdf","ALG-Chap3.pdf","ALG-Chap4.pdf"], td:["ALG-TD1.pdf","ALG-TD2.pdf","ALG-TD3.pdf","ALG-TD4.pdf"],},
+    {name:"Algèbre de base et applications", cours:["ALG-Chap1.pdf","ALG-Chap2.pdf","ALG-Chap3.pdf","ALG-Chap4.pdf"], td:["ALG-TD1.pdf","ALG-TD2.pdf","ALG-TD3.pdf","ALG-TD4.pdf"]},
     {name:"Méthodes numériques", cours:["MN-Chap1.pdf","MN-Chap2.pdf","MN-Chap3.pdf","MN-Chap4.pdf"], td:["MN-TD1.pdf","MN-TD2.pdf","MN-TD3.pdf","MN-TD4.pdf"]},
     {name:"Probabilités & statistique inférentielle", cours:["PSI-Chap1.pdf","PSI-Chap2.pdf","PSI-Chap3.pdf","PSI-Chap4.pdf"], td:["PSI-TD1.pdf","PSI-TD2.pdf","PSI-TD3.pdf","PSI-TD4.pdf"]},
     {name:"Mathématiques pour l'IA", cours:["MIA-Chap1.pdf","MIA-Chap2.pdf","MIA-Chap3.pdf","MIA-Chap4.pdf"], td:["MIA-TD1.pdf","MIA-TD2.pdf","MIA-TD3.pdf","MIA-TD4.pdf"]},
     {name:"TICE & communication scientifique", cours:["TICE-Chap1.pdf","TICE-Chap2.pdf","TICE-Chap3.pdf","TICE-Chap4.pdf"], td:["TICE-TD1.pdf","TICE-TD2.pdf","TICE-TD3.pdf","TICE-TD4.pdf"]},
-    {name:"Langues étrangeres", cours:["LG-Chap1.pdf","LG-Chap2.pdf","LG-Chap3.pdf","LG-Chap4.pdf"], td:[]},
-
-      // Module Présentations pour Semestre 1
-  
+    {name:"Langues étrangeres", cours:["LG-Chap1.pdf","LG-Chap2.pdf","LG-Chap3.pdf","LG-Chap4.pdf"], td:[]}
   ],
   2:[
     {name:"Analyse harmonique appliquée", cours:["AHA-Chap1.pdf","AHA-Chap2.pdf","AHA-Chap3.pdf","AHA-Chap4.pdf"], td:["AHA-TD1.pdf","AHA-TD2.pdf","AHA-TD3.pdf","AHA-TD4.pdf"]},
@@ -487,9 +491,7 @@ const semesters = {
     {name:"Python pour la modélisation", cours:["PY-Chap1.pdf","PY-Chap2.pdf","PY-Chap3.pdf","PY-Chap4.pdf"], td:["PY-TD1.pdf","PY-TD2.pdf","PY-TD3.pdf","PY-TD4.pdf"]},
     {name:"Analyse convexe & optimisation", cours:["ACO-Chap1.pdf","ACO-Chap2.pdf","ACO-Chap3.pdf","ACO-Chap4.pdf"], td:["ACO-TD1.pdf","ACO-TD2.pdf","ACO-TD3.pdf","ACO-TD4.pdf"]},
     {name:"Culture entrepreneuriale", cours:["CE-Chap1.pdf","CE-Chap2.pdf","CE-Chap3.pdf","CE-Chap4.pdf"], td:["CE-TD1.pdf","CE-TD2.pdf","CE-TD3.pdf","CE-TD4.pdf"]},
-    {name:"Psychologie de l'intelligence", cours:["PI-Chap1.pdf","PI-Chap2.pdf","PI-Chap3.pdf","PI-Chap4.pdf"], td:["PI-TD1.pdf","PI-TD2.pdf","PI-TD3.pdf","PI-TD4.pdf"]},
-    // Module Présentations pour Semestre 2
-   
+    {name:"Psychologie de l'intelligence", cours:["PI-Chap1.pdf","PI-Chap2.pdf","PI-Chap3.pdf","PI-Chap4.pdf"], td:["PI-TD1.pdf","PI-TD2.pdf","PI-TD3.pdf","PI-TD4.pdf"]}
   ],
   3:[
     {name:"Analyse de Fourier Clifford", cours:["AFC-Chap1.pdf","AFC-Chap2.pdf","AFC-Chap3.pdf","AFC-Chap4.pdf"], td:["AFC-TD1.pdf","AFC-TD2.pdf","AFC-TD3.pdf","AFC-TD4.pdf"]},
@@ -498,9 +500,7 @@ const semesters = {
     {name:"Théorie des codes", cours:["TC-Chap1.pdf","TC-Chap2.pdf","TC-Chap3.pdf","TC-Chap4.pdf"], td:["TC-TD1.pdf","TC-TD2.pdf","TC-TD3.pdf","TC-TD4.pdf"]},
     {name:"Cryptographie", cours:["CRY-Chap1.pdf","CRY-Chap2.pdf","CRY-Chap3.pdf","CRY-Chap4.pdf"], td:["CRY-TD1.pdf","CRY-TD2.pdf","CRY-TD3.pdf","CRY-TD4.pdf"]},
     {name:"Analyse numérique avancée", cours:["ANA-Chap1.pdf","ANA-Chap2.pdf","ANA-Chap3.pdf","ANA-Chap4.pdf"], td:["ANA-TD1.pdf","ANA-TD2.pdf","ANA-TD3.pdf","ANA-TD4.pdf"]},
-    {name:"Compétences numériques", cours:["CN-Chap1.pdf","CN-Chap2.pdf","CN-Chap3.pdf","CN-Chap4.pdf"], td:["CN-TD1.pdf","CN-TD2.pdf","CN-TD3.pdf","CN-TD4.pdf"]},
-    // Module Présentations pour Semestre 3
-   
+    {name:"Compétences numériques", cours:["CN-Chap1.pdf","CN-Chap2.pdf","CN-Chap3.pdf","CN-Chap4.pdf"], td:["CN-TD1.pdf","CN-TD2.pdf","CN-TD3.pdf","CN-TD4.pdf"]}
   ]
 };
 
@@ -524,56 +524,9 @@ function renderModules(sem){
   const allowedModules = [ "Culture entrepreneuriale","Analyse convexe & optimisation","Python pour la modélisation","Recherche opérationnelle","Méthodes analytiques & numériques", "Analyse harmonique appliquée", "Mathématiques pour l'IA","Langues étrangeres","Algèbre de base et applications","Probabilités & statistique inférentielle","Méthodes numériques","Analyse fonctionnelle"]; 
 
   semesters[sem].forEach(m=>{
-    if (m.isSpecial) {
-      // Carte spéciale pour Présentations
-      const card = document.createElement("div");
-      card.className="card presentations-card";
-      
-      const title = document.createElement("h3");
-      title.textContent = m.name;
-      card.appendChild(title);
-      
-      // Bouton pour afficher les présentations
-      const presentationsBtn = document.createElement("button");
-      presentationsBtn.className = "presentations-btn";
-      presentationsBtn.textContent = "📂 Voir les présentations";
-      card.appendChild(presentationsBtn);
-      
-      // Dropdown pour les présentations
-      const dropdown = document.createElement("div");
-      dropdown.className = "presentations-dropdown";
-      
-      // Créer les liens pour les 10 présentations
-      if (m.presentations) {
-        m.presentations.forEach((presentation, index) => {
-          const link = document.createElement("a");
-          link.textContent = `Présentation ${index + 1}`;
-          link.href = `files/${presentation}`;
-          link.target = "_blank";
-          dropdown.appendChild(link);
-        });
-      }
-      
-      card.appendChild(dropdown);
-      
-      // Événement pour afficher/masquer les présentations
-      presentationsBtn.addEventListener("click", () => {
-        if (dropdown.style.display === "flex") {
-          dropdown.style.display = "none";
-          presentationsBtn.textContent = "📂 Voir les présentations";
-        } else {
-          dropdown.style.display = "flex";
-          dropdown.style.flexDirection = "column";
-          presentationsBtn.textContent = "📂 Masquer les présentations";
-        }
-      });
-      
-      container.appendChild(card);
-      return;
-    }
-    
     const card = document.createElement("div");
     card.className="card";
+    
     const title = document.createElement("h3");
     title.textContent=m.name;
     card.appendChild(title);
@@ -595,6 +548,11 @@ function renderModules(sem){
     const tdDropdown = document.createElement("div");
     tdDropdown.className="dropdown";
 
+    const msg = document.createElement("div");
+    msg.className = "message-box";
+    msg.textContent = "Pas disponible actuellement !";
+    card.appendChild(msg);
+
     // Cours
     m.cours.forEach((file,i)=>{
       const a = document.createElement("a");
@@ -602,15 +560,11 @@ function renderModules(sem){
 
       if(!allowedModules.includes(m.name)){
         a.href = "#";
-        const msg = document.createElement("div");
-        msg.className = "message-box";
-        msg.textContent = "Pas disponible actuellement !";
         a.addEventListener("click", e=>{
           e.preventDefault();
           msg.style.display = "block";
           setTimeout(()=> msg.style.display = "none", 3000);
         });
-        card.appendChild(msg);
       } else {
         a.href = "files/"+file;
         a.target="_blank";
@@ -626,15 +580,11 @@ function renderModules(sem){
 
       if(!allowedModules.includes(m.name)){
         a.href = "#";
-        const msg = document.createElement("div");
-        msg.className = "message-box";
-        msg.textContent = "Pas disponible actuellement !";
         a.addEventListener("click", e=>{
           e.preventDefault();
           msg.style.display = "block";
           setTimeout(()=> msg.style.display = "none", 3000);
         });
-        card.appendChild(msg);
       } else {
         a.href = "files/"+file;
         a.target="_blank";
@@ -647,46 +597,35 @@ function renderModules(sem){
     card.appendChild(tdDropdown);
 
     coursBtn.addEventListener("click",()=>{ 
+      tdDropdown.style.display = "none";
       coursDropdown.style.display = coursDropdown.style.display==="flex"?"none":"flex"; 
       coursDropdown.style.flexDirection="column"; 
     });
+    
     tdBtn.addEventListener("click",()=>{ 
+      coursDropdown.style.display = "none";
       tdDropdown.style.display = tdDropdown.style.display==="flex"?"none":"flex"; 
       tdDropdown.style.flexDirection="column"; 
     });
 
     container.appendChild(card);
   });
-
-  // Le module Présentations sera toujours placé à la fin
-  const cards = Array.from(container.children);
-  const total = cards.length;
-  const remainder = total % 3;
-  if(remainder>0){
-    for(let i=total-remainder; i<total; i++){
-      cards[i].style.justifySelf="center";
-    }
-  }
 }
 
-// Search functionality
-document.getElementById("searchBtn").addEventListener("click",()=>{
+// البحث
+document.getElementById("searchBtn").addEventListener("click", searchModules);
+document.getElementById("searchInput").addEventListener("keyup", searchModules);
+
+function searchModules(){
   const query = document.getElementById("searchInput").value.toLowerCase();
   document.querySelectorAll(".card").forEach(card=>{
     if(card.querySelector("h3").textContent.toLowerCase().includes(query)){
       card.style.display="block";
-    }else card.style.display="none";
+    }else {
+      card.style.display="none";
+    }
   });
-});
+}
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
